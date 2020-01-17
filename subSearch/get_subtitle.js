@@ -14,7 +14,7 @@ const OS = new OpenSubtitles({
 module.exports = async (id, season, episode) => {
 
 	let file_name = get_file_name(id, season, episode);
-	let path = `subs/${file_name}`;
+	let path = `${__dirname}/subs/${file_name}`;
 
 	if(fs.existsSync(path)) {
 
