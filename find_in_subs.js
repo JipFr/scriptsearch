@@ -44,7 +44,6 @@ function clearup(str) {
 	str = str.toLowerCase();
 	let allowed = " abcdefghijklmnopqrstuvwxyz";
 
-	// let cleared = str.split("").filter(char => allowed.includes(char)).join("");
 	let cleared = "";
 	str.split("").forEach(char => {
 		if(allowed.includes(char)) {
