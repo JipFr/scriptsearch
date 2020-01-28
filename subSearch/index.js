@@ -18,7 +18,8 @@ async function fetchData(id, season = 1, seasons = {}) {
 	}
 
 	let ep_links = [...document.querySelectorAll(".info")];
-	seasons[season] = ep_links.length;
+    seasons[season] = ep_links.length;
+    console.log("Season", season, "of", id, "has", ep_links.length, "episodes");
 
 	return seasons;
 

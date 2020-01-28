@@ -8,28 +8,32 @@ module.exports = (data, query) => {
 		
 			let sub = data[season][episode];
 
-			let lines = sub.split("\n\n");
+            if(sub) {
+                let lines = sub.split("\n\n");
 			
-			lines.forEach(line => {
-				
-				line = line.split("\n");
-				let times = line.splice(0, 1)[0];
-				let sentence = line.join(" \n");
-				line = line.join(" ");
-				
-				if(clearup(sentence).includes(clearup(query))) {
-					results.push({
-						line,
-						times,
-						meta: {
-							season: Number(season),
-							episode: Number(episode)
-						}
-					});
-				}
+    			lines.forEach(line => {
+    				
+    				line = line.split("\n");
+    				let times = line.splice(0, 1)[0];
+    				let sentence = line.join(" \n");
+    				line = line.join(" ");
+    				
+    				if(clearup(sentence).includes(clearup(query))) {
+    					results.push({
+    						line,
+    						times,
+    						meta: {
+    							season: Number(season),
+    							episode: Number(episode)
+    						}
+    					});
+    				}
 
-			});
+    			});
 
+            }
+
+			
 		}
 	}
 

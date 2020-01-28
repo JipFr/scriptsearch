@@ -18,6 +18,7 @@ module.exports = async (id, season, episode) => {
 
 	if(fs.existsSync(path)) {
 
+        console.log(`Doing S${season} E${episode} of ${id}`);
 		let file = fs.readFileSync(path, "utf-8");
 		return file;
 
@@ -29,12 +30,20 @@ module.exports = async (id, season, episode) => {
 			episode,
 			gzip: false
 		});
-		let sub_res = await fetch(results.en.vtt);
-		let sub = await sub_res.text();
+        
+        
+        if(results.en && results.en.vtt) {
+            let sub_res = await fetch(results.en.vtt);
+            let sub = await sub_res.text();
 
-		fs.writeFileSync(path, sub);
+            fs.writeFileSync(path, sub);
+            console.log(`Doing S${season} E${episode} of ${id}`);
+    		
+    		return sub;
+        } else {
+            return null;
+        }
 		
-		return sub;
 	}
 
 }
